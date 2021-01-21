@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/Spring_mvc_01" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring_mvc_02" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring_mvc_03" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring_mvc_04" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring_mvc_other_01" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring_mvc_other_02" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring_mvc_project_test" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring_SpringMVC_MyBatis" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring_SpringMVC_MyBatis_Anno" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring_web_01" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring_web_02" />
+    <file type="web" url="file://$PROJECT_DIR$/SSM" />
+    <file type="web" url="file://$PROJECT_DIR$/SSM_Anno" />
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Spring_01_ioc/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_02_ioc_anno/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_03_aop/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_04_aop_anno/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_05_jdbc/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_06_tx/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_07_tx_anno/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_mvc_01/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_mvc_02/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_mvc_03/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_mvc_04/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_mvc_project_test/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_SpringMVC_MyBatis/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_SpringMVC_MyBatis_Anno/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_web_01/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_web_02/pom.xml" />
+        <option value="$PROJECT_DIR$/SSM/pom.xml" />
+        <option value="$PROJECT_DIR$/SSM_Anno/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_mvc_other_01/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_mvc_other_02/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

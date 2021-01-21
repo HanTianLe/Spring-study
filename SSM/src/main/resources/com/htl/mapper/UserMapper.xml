@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.htl.mapper.UserMapper">
+
+    <!--查询所有用户-->
+    <select id="findAll" resultType="user">
+        select * from sys_user
+    </select>
+
+    <!--向 sys_user表中存储数据，并返回当前保存用户的id，-->
+    <!--useGeneratedKeys设置为 true 时，表示如果插入的表id以自增列为主键，
+    则允许 JDBC 支持自动生成主键，并可将自动生成的主键id返回。
+    useGeneratedKeys参数只针对 insert 语句生效，默认为 false。-->
+    <insert id="save" parameterType="user" keyProperty="id" useGeneratedKeys="true">
+        insert into sys_user values(#{id},#{username},#{email},#{password},#{phoneNum})
+    </insert>
+
+    <!--向 sys_user_role关系表中存储多条数据-->
+    <!--当参数是int类型，且多个时，最好的方法是用集合，
+    用：#{param1}，#{param2}获取，param1、param2分别表示第1、2个元素。
+    或者用：#{arg0}，#{arg1}获取，arg0、arg1分别表示第1、2个元素。-->
+    <insert id="saveUserRoleRel" parameterType="int">
+        insert into sys_user_role values(#{param1},#{param2})
+    </insert>
+
+    <!--删除sys_user_role关系表数据（先）-->
+    <delete id="deleteUserRoleRel" parameterType="int">
+        delete from sys_user_role where userId=#{userId}
+    </delete>
+
+    <!--删除sys_user表数据（后）-->
+    <delete id="deleteUser" parameterType="int">
+        delete from sys_user where id=#{userId}
+    </delete>
+
+    <!--用户登录-->
+    <select id="findByUsernameAndPassword" parameterType="string" resultType="user">
+        select * from sys_user where username=#{arg0} and password=#{arg1}
+    </select>
+
+</mapper>

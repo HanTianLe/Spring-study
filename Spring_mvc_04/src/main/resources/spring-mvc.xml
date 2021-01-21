@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--1、mvc注解驱动-->
+    <mvc:annotation-driven/>
+
+    <!--2、配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--3、静态资源权限开放-->
+    <mvc:default-servlet-handler/>
+
+    <!--4、组件扫描  扫描Controller-->
+    <context:component-scan base-package="com.htl.controller"/>
+
+    <!--简单异常处理器_SpringMVC提供-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!--默认异常，弹出error视图-->
+        <!--当弹出的异常（如除零异常、空指针异常、文件找不到异常），下面特定的异常中没有时，则使用默认异常-->
+        <property name="defaultErrorView" value="error"/>
+        <!--定义特定的异常跳转到特定的页面-->
+        <property name="exceptionMappings">
+            <map>
+                <!--类型转换异常，弹出error1视图-->
+                <entry key="java.lang.ClassCastException" value="error1"/>
+                <!--自定义的异常，弹出error2视图-->
+                <entry key="com.htl.exception.MyException" value="error2"/>
+            </map>
+        </property>
+    </bean>
+
+    <!--自定义异常处理器-->
+<!--    <bean class="com.htl.resolver.MyExceptionResolver"/>-->
+
+    <!--
+    【简单的异常处理器】 与 【自定义异常处理器】 可以分别测试，
+    想要测试spring_mvc提供的异常处理器，则注释自定义的异常处理器；反之亦然。
+    -->
+
+</beans>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1、scope属性 -->
+    <!--bean的 scope 默认是 singleton（单例的），可以省略不写-->
+    <bean id="userDao1" class="com.htl.dao.impl.UserDaoImpl" scope="singleton"/>
+    <bean id="userDao2" class="com.htl.dao.impl.UserDaoImpl" scope="prototype"/>
+
+
+    <!-- 2、init-method、destroy-method属性 -->
+    <bean id="userDao" class="com.htl.dao.impl.UserDaoImpl" init-method="init" destroy-method="destroy"/>
+
+
+    <!-- 3、factory-method属性 -->
+    <!-- 工厂静态方法实例化 -->
+    <bean id="userDao3" class="com.htl.factory.StaticFactory" factory-method="getUserDao"/>
+    <!-- 工厂实例方法实例化 -->
+    <bean id="factory" class="com.htl.factory.DynamicFactory"/>
+    <bean id="userDao4" factory-bean="factory" factory-method="getUserDao"/>
+
+
+    <!-- 4、普通 -->
+    <bean id="userDao5" class="com.htl.dao.impl.UserDaoImpl"/>
+    <bean id="userService" class="com.htl.service.impl.UserServiceImpl"/>
+
+
+    <!-- 5、set注入 -->
+    <!--name的值是set方法里面的参数名。ref的值是容器当中的bean的id。-->
+    <bean id="userDao6" class="com.htl.dao.impl.UserDaoImpl"/>
+    <bean id="userService1" class="com.htl.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao6"/>
+    </bean>
+
+
+    <!-- 6、P命名空间注入（本质就是set注入）-->
+    <bean id="userDao7" class="com.htl.dao.impl.UserDaoImpl"/>
+    <bean id="userService2" class="com.htl.service.impl.UserServiceImpl" p:userDao-ref="userDao7"/>
+
+
+    <!-- 7、构造方法注入 -->
+    <!-- name的值是构造函数里面的参数名。ref的值是容器当中的bean的id。-->
+    <bean id="userDao8" class="com.htl.dao.impl.UserDaoImpl"/>
+    <bean id="userService3" class="com.htl.service.impl.UserServiceImpl">
+        <constructor-arg name="userDao" ref="userDao8"/>
+    </bean>
+
+
+    <!-- 8、普通数据类型注入 -->
+    <!-- name的值是属性名。value是属性所要赋的值 -->
+    <bean id="userDao9" class="com.htl.dao.impl.UserDaoImpl">
+        <property name="username" value="张三"/>
+        <property name="age" value="20"/>
+    </bean>
+
+
+    <!-- 9、集合注入 -->
+    <bean id="user1" class="com.htl.domain.User">
+        <!--name里面的值是User类里面的属性名-->
+        <property name="name" value="Tom"/>
+        <property name="address" value="北京"/>
+    </bean>
+
+    <bean id="user2" class="com.htl.domain.User">
+        <property name="name" value="Jerry"/>
+        <property name="address" value="南京"/>
+    </bean>
+
+    <bean id="user3" class="com.htl.domain.User">
+        <property name="name" value="Dog"/>
+        <property name="address" value="燕京"/>
+    </bean>
+
+    <bean id="userDao10" class="com.htl.dao.impl.UserDaoImpl">
+        <!--list集合-->
+        <property name="strList">
+            <list>
+                <!--添加三个元素-->
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </list>
+        </property>
+        <!--Map集合-->
+        <property name="userMap">
+            <map>
+                <!--key里面的值叫啥都行，但同一个Map里面的key值不能相同！-->
+                <!--value-ref里面的值是容器当中的bean的id-->
+                <entry key="u1" value-ref="user1"/>
+                <entry key="u2" value-ref="user2"/>
+                <entry key="u3" value-ref="user3"/>
+            </map>
+        </property>
+        <!--Properties-->
+        <property name="properties">
+            <props>
+                <prop key="p1">值1</prop>
+                <prop key="p2">value2</prop>
+                <prop key="p3">zhi3</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

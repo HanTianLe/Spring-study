@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.htl.mapper.RoleMapper">
+
+    <!--查询所有角色-->
+    <select id="findAll" resultType="role">
+        select * from sys_role
+    </select>
+
+    <!--新建角色-->
+    <insert id="save" parameterType="role">
+        insert into sys_role values(#{id},#{roleName},#{roleDesc})
+    </insert>
+
+    <!--根据 用户 id 查询角色-->
+    <select id="findRoleByUserId" parameterType="int" resultType="role">
+        select * from sys_user_role ur,sys_role r where ur.roleId=r.id and ur.userId=#{id}
+    </select>
+
+    <!--删除sys_user_role关系表数据（先）-->
+    <delete id="deleteUserRoleRel" parameterType="int">
+        delete from sys_user_role where roleId=#{roleId}
+    </delete>
+
+    <!--删除sys_role表数据（后）-->
+    <delete id="deleteRole" parameterType="int">
+        delete from sys_role where id=#{roleId}
+    </delete>
+
+</mapper>

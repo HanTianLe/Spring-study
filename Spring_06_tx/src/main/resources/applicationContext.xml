@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--加载jdbc.properties-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--配置数据源-->
+    <bean id="c3p0-dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!--配置jdbc模板-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="c3p0-dataSource"/>
+    </bean>
+
+    <bean id="accountDao" class="com.htl.dao.impl.AccountDaoImpl">
+        <!--将jdbcTemplate注入到AccountDao实例中-->
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!--目标对象  内部的方法就是切点-->
+    <bean id="accountService" class="com.htl.service.impl.AccountServiceImpl">
+        <property name="accountDao" ref="accountDao"/>
+    </bean>
+
+    <!--配置平台事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="c3p0-dataSource"/>
+    </bean>
+
+    <!--通知 事务的增强-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!--设置事务的属性信息-->
+        <tx:attributes>
+            <!--表示transfer方法被增强-->
+            <tx:method name="transfer" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <!--表示save方法被增强-->
+            <tx:method name="save" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <!--表示findAll方法被增强-->
+            <tx:method name="findAll" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+            <!--所有以update开头的方法-->
+            <tx:method name="update*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+            <!--表示任意方法名称-->
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--配置事务的AOP织入-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;advice-ref：通知引入   pointcut：切点，一般配的是业务层&ndash;&gt;-->
+<!--        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.htl.service.impl.*.*(..))"/>-->
+<!--    </aop:config>-->
+    <!--优化写法：-->
+    <aop:config>
+        <!--pointcut：切点，一般配的是业务层-->
+        <aop:pointcut id="txPointcut" expression="execution(* com.htl.service.impl.*.*(..))"/>
+        <!--advice-ref：通知引入  pointcut-ref：切点引入 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+    </aop:config>
+
+</beans>

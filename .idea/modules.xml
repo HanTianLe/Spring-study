@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SSM/SSM.iml" filepath="$PROJECT_DIR$/SSM/SSM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SSM_Anno/SSM_Anno.iml" filepath="$PROJECT_DIR$/SSM_Anno/SSM_Anno.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Spring-study.iml" filepath="$PROJECT_DIR$/.idea/Spring-study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_01_ioc/Spring_01_ioc.iml" filepath="$PROJECT_DIR$/Spring_01_ioc/Spring_01_ioc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_02_ioc_anno/Spring_02_ioc_anno.iml" filepath="$PROJECT_DIR$/Spring_02_ioc_anno/Spring_02_ioc_anno.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_03_aop/Spring_03_aop.iml" filepath="$PROJECT_DIR$/Spring_03_aop/Spring_03_aop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_04_aop_anno/Spring_04_aop_anno.iml" filepath="$PROJECT_DIR$/Spring_04_aop_anno/Spring_04_aop_anno.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_05_jdbc/Spring_05_jdbc.iml" filepath="$PROJECT_DIR$/Spring_05_jdbc/Spring_05_jdbc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_06_tx/Spring_06_tx.iml" filepath="$PROJECT_DIR$/Spring_06_tx/Spring_06_tx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_07_tx_anno/Spring_07_tx_anno.iml" filepath="$PROJECT_DIR$/Spring_07_tx_anno/Spring_07_tx_anno.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_SpringMVC_MyBatis/Spring_SpringMVC_MyBatis.iml" filepath="$PROJECT_DIR$/Spring_SpringMVC_MyBatis/Spring_SpringMVC_MyBatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_SpringMVC_MyBatis_Anno/Spring_SpringMVC_MyBatis_Anno.iml" filepath="$PROJECT_DIR$/Spring_SpringMVC_MyBatis_Anno/Spring_SpringMVC_MyBatis_Anno.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_mvc_01/Spring_mvc_01.iml" filepath="$PROJECT_DIR$/Spring_mvc_01/Spring_mvc_01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_mvc_02/Spring_mvc_02.iml" filepath="$PROJECT_DIR$/Spring_mvc_02/Spring_mvc_02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_mvc_03/Spring_mvc_03.iml" filepath="$PROJECT_DIR$/Spring_mvc_03/Spring_mvc_03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_mvc_04/Spring_mvc_04.iml" filepath="$PROJECT_DIR$/Spring_mvc_04/Spring_mvc_04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_mvc_other_01/Spring_mvc_other_01.iml" filepath="$PROJECT_DIR$/Spring_mvc_other_01/Spring_mvc_other_01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_mvc_other_02/Spring_mvc_other_02.iml" filepath="$PROJECT_DIR$/Spring_mvc_other_02/Spring_mvc_other_02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_mvc_project_test/Spring_mvc_project_test.iml" filepath="$PROJECT_DIR$/Spring_mvc_project_test/Spring_mvc_project_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_web_01/Spring_web_01.iml" filepath="$PROJECT_DIR$/Spring_web_01/Spring_web_01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring_web_02/Spring_web_02.iml" filepath="$PROJECT_DIR$/Spring_web_02/Spring_web_02.iml" />
+    </modules>
+  </component>
+</project>

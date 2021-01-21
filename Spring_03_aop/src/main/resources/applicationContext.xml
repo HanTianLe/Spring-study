@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--1、目标对象-->
+    <bean id="target" class="com.htl.aop.Target"/>
+    <!--2、切面对象-->
+    <bean id="myAspect" class="com.htl.aop.MyAspect"/>
+    <!--3、配置织入，告诉spring框架，哪些方法（切点）需要进行哪些增强（前置、后置）-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;声明切面&ndash;&gt;-->
+<!--        <aop:aspect ref="myAspect">-->
+<!--            &lt;!&ndash;切面：切点+通知(增强)&ndash;&gt;-->
+<!--            <aop:before method="before" pointcut="execution(public void com.htl.aop.Target.save())"/>-->
+<!--            <aop:after-returning method="afterReturning" pointcut="execution(public void com.htl.aop.Target.save())"/>-->
+<!--            <aop:around method="around" pointcut="execution(public void com.htl.aop.Target.save())"/>-->
+<!--            &lt;!&ndash;如果没有异常，则不会执行该增强&ndash;&gt;-->
+<!--            <aop:after-throwing method="afterThrowing" pointcut="execution(public void com.htl.aop.Target.save())"/>-->
+<!--            <aop:after method="after" pointcut="execution(public void com.htl.aop.Target.save())"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+
+    <!--优化写法：-->
+    <aop:config>
+        <!--声明切面-->
+        <aop:aspect ref="myAspect">
+            <!--抽取切点表达式-->
+            <aop:pointcut id="myPointcut" expression="execution(public void com.htl.aop.Target.save())"/>
+            <!--下面各种增强引用切点表达式-->
+            <aop:before method="before" pointcut-ref="myPointcut"/>
+            <aop:after-returning method="afterReturning" pointcut-ref="myPointcut"/>
+            <aop:around method="around" pointcut-ref="myPointcut"/>
+            <!--如果没有异常，则不会执行该增强-->
+            <aop:after-throwing method="afterThrowing" pointcut-ref="myPointcut"/>
+            <aop:after method="after" pointcut-ref="myPointcut"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
+

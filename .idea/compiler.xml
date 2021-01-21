@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Spring_mvc_03" />
+        <module name="Spring_mvc_02" />
+        <module name="Spring_mvc_01" />
+        <module name="Spring_03_aop" />
+        <module name="Spring_SpringMVC_MyBatis_Anno" />
+        <module name="Spring_02_ioc_anno" />
+        <module name="Spring_web_02" />
+        <module name="Spring_web_01" />
+        <module name="Spring_01_ioc" />
+        <module name="Spring_04_aop_anno" />
+        <module name="Spring_06_tx" />
+        <module name="SSM" />
+        <module name="Spring_mvc_other_01" />
+        <module name="Spring_mvc_project_test" />
+        <module name="Spring_05_jdbc" />
+        <module name="Spring_SpringMVC_MyBatis" />
+        <module name="Spring_mvc_other_02" />
+        <module name="SSM_Anno" />
+        <module name="Spring_07_tx_anno" />
+        <module name="Spring_mvc_04" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Spring_01_ioc" target="1.8" />
+      <module name="Spring_02_ioc_anno" target="1.8" />
+      <module name="Spring_03_aop" target="1.8" />
+      <module name="Spring_04_aop_anno" target="1.8" />
+      <module name="Spring_05_jdbc" target="1.8" />
+      <module name="Spring_06_tx" target="1.8" />
+      <module name="Spring_07_tx_anno" target="1.8" />
+      <module name="Spring_mvc_01" target="1.8" />
+      <module name="Spring_mvc_02" target="1.8" />
+      <module name="Spring_mvc_03" target="1.8" />
+      <module name="Spring_mvc_04" target="1.8" />
+      <module name="Spring_mvc_other_01" target="1.8" />
+      <module name="Spring_mvc_other_02" target="1.8" />
+      <module name="Spring_mvc_project_test" target="1.8" />
+      <module name="Spring_SpringMVC_MyBatis" target="1.8" />
+      <module name="Spring_SpringMVC_MyBatis_Anno" target="1.8" />
+      <module name="Spring_web_01" target="1.8" />
+      <module name="Spring_web_02" target="1.8" />
+      <module name="SSM" target="1.8" />
+      <module name="SSM_Anno" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

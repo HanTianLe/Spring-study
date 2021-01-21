@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--组件扫描（主要扫描Controller）-->
+    <!--SpringMVC基于Spring容器，所以在进行SpringMVC操作时，需要将controller存储到Spring容
+    器中，如果使用@Controller注解标注的话，就需要使用。-->
+    <context:component-scan base-package="com.htl.controller"/>
+
+    <!--配置mvc注解驱动-->
+    <mvc:annotation-driven/>
+
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--前缀-->
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <!--后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--开启静态资源访问权限-->
+    <!--方法1：-->
+    <mvc:default-servlet-handler/>
+    <!--方法2：（如果webapp下有js文件夹里面有js文件）-->
+    <!--<mvc:resources mapping="/js/**" location="/js/"/> -->
+
+
+</beans>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--组件扫描-->
+    <context:component-scan base-package="com.htl"/>
+
+    <!--加载jdbc.properties  ,  要引入context命名空间和约束路径-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--配置数据源-->
+    <bean id="c3p0-dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!--配置jdbc模板-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="c3p0-dataSource"/>
+    </bean>
+
+<!--    <bean id="accountDao" class="com.htl.dao.impl.AccountDaoImpl">-->
+<!--        &lt;!&ndash;将jdbcTemplate注入到AccountDao实例中&ndash;&gt;-->
+<!--        <property name="jdbcTemplate" ref="jdbcTemplate"/>-->
+<!--    </bean>-->
+
+    <!--目标对象  内部的方法就是切点-->
+<!--    <bean id="accountService" class="com.htl.service.impl.AccountServiceImpl">-->
+<!--        <property name="accountDao" ref="accountDao"/>-->
+<!--    </bean>-->
+
+    <!--配置平台事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="c3p0-dataSource"/>
+    </bean>
+
+    <!--通知 事务的增强-->
+<!--    <tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+<!--        &lt;!&ndash;设置事务的属性信息&ndash;&gt;-->
+<!--        <tx:attributes>-->
+<!--            &lt;!&ndash;表示任意方法名称&ndash;&gt;-->
+<!--            <tx:method name="*"/>-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
+
+    <!--配置事务的AOP织入-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;pointcut：切点，一般配的是业务层&ndash;&gt;-->
+<!--        <aop:pointcut id="txPointcut" expression="execution(* com.htl.service.impl.*.*(..))"/>-->
+<!--        &lt;!&ndash;advice-ref：通知引入  pointcut-ref：切点引入 &ndash;&gt;-->
+<!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>-->
+<!--    </aop:config>-->
+
+    <!--事务的注解驱动 。 没有这个的话，@Transactional将不起作用-->
+    <!--transaction-manager="transactionManager"默认有的，可不写-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans>
